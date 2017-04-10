@@ -1,14 +1,15 @@
 import React from 'react';
 
-import AppBar from 'material-ui/AppBar';
+import AdminDrawer from './component/AdminDrawer';
+import AdminAppBar from './container/AdminAppBar';
 
 export default class Admin extends React.Component{
 	render(){
 		return(
-			<AppBar
-			    title="Admin"
-			    iconClassNameRight="muidocs-icon-navigation-expand-more"
-			  />
+			<div>
+				<AdminAppBar />
+				<AdminDrawer />
+			</div>
 		)
 	}
 }

@@ -23,7 +23,7 @@ module.exports = {
         loader: 'babel-loader',
         include: APP_PATH,
         query:{
-        	presets:['react', 'es2015'],
+        	presets:['react', 'es2015', 'stage-0'],
         	"env": {
 						"development": {
 						 	"presets": ["react-hmre"]
