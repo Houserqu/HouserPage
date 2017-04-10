@@ -1,5 +1,6 @@
 import React from 'react';
-import path from 'path';
+import {connect} from 'react-redux';
+import {setNotificationsNum} from '../adminAction';
 
 import AppBar from 'material-ui/AppBar';
 import Badge from 'material-ui/Badge';
@@ -8,12 +9,11 @@ import Avatar from 'material-ui/Avatar';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import MenuItem from 'material-ui/MenuItem';
-import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import Popover from 'material-ui/Popover';
 import Menu from 'material-ui/Menu';
 
-export default class AdminAppBar extends React.Component {
+class AdminAppBar extends React.Component {
 	constructor(props){
 		super(props);
 		this.state = {
@@ -33,27 +33,31 @@ export default class AdminAppBar extends React.Component {
 	    });
 	};
 
-	render() {
+	handelReadNotification = () =>{
+		this.props.dispatch(setNotificationsNum(0));
+	};
 
+	render() {
 		const style = {margin: 18};
-		const headimg = path.resolve(__dirname, 'static', 'image', 'houser.jpg');
+		const {dispatch, user, notifications} = this.props;
 
 		return (
 		    <AppBar title="Console">
 		        <Badge
-			      badgeContent={4}
+			      badgeContent={notifications}
 			      secondary={true}
 			      badgeStyle={{top: 12, right: 12}}
+			      onClick={this.handelReadNotification}
 			    >
 			      <NotificationsIcon />
 			    </Badge>
 
 			    <Avatar
-		          src={headimg}
+		          src={user.headimg}
 		          size={30}
 		          style={style}
-		          onTouchTap={this.handleTouchTap.bind(this)}
-		        />
+		          onTouchTap={this.handleTouchTap}
+		          		        />
 
 		       	<Popover
 		          open={this.state.open}
@@ -73,3 +77,12 @@ export default class AdminAppBar extends React.Component {
 		);
 	}
 }
+
+function mapStateToProps(state){
+	return{
+		user: state.Admin.global.user,
+		notifications:state.Admin.global.notifications
+	}
+}
+
+export default connect(mapStateToProps)(AdminAppBar)

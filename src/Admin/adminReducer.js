@@ -1,29 +1,17 @@
 import { combineReducers } from 'redux'
 
 // Reducer
-function adminarticles(state = { articles: [{key:0, title:"1", time:'1',content:"1",username:"1"}]}, action) {
-  switch(action.type){
-    case 'REFRESH_ARTICLE':
-      return Object.assign({},state,{
-        articles: action.articles
-      });
-
-    default: return state;
-  }
-}
-
-// Reducer
-function adminglobal(state = {
-  user:{username : '', headimg :''}, 
-  draweropen :false, 
+function global(state = {
+  user:{username : 'Houser', headimg :'/static/image/houser.jpg'}, 
+  notifications : 9,
   snackbar:{open : false, message :''},
   loading:{status :'hide'},
 
 }, action) {
   switch( action.type){
-    case 'TOGGLE_DEAWER':
+    case 'SET_NOTIFICATION_NUM':
       return Object.assign({}, state, {
-        draweropen: !state.draweropen
+        notifications: action.sum
       });
 
     default: return state;
@@ -31,5 +19,8 @@ function adminglobal(state = {
   return state;
 }
 
+const Admin = combineReducers({
+  global
+})
 
-export default adminarticles;
+export default Admin;
