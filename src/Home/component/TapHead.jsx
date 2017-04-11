@@ -16,7 +16,7 @@ export default class TapHead extends React.Component{
 				
 			}
 		};
-
+ 
 		return(
 			<div style={style.root}>
 				<p style={style.p}>{this.props.introduction}</p>
