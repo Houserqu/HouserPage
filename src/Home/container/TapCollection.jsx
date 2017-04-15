@@ -28,12 +28,12 @@ class TapCollection extends React.Component{
 		}
 
 		let categorys = this.props.categorys.map((item)=>{
-			return <CollectionCategory category={item}/>
+			return <CollectionCategory key={item.id} category={item}/>
 		})
 
 		return(
 			<div style={style.root}>
-				<TapHead introduction={this.introduction} />
+				<TapHead introduction={this.props.introduction} />
 				<div style={style.main}>
 					{categorys}
 				</div>

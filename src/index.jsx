@@ -9,6 +9,9 @@ import thunkMiddleware from 'redux-thunk'
 
 import Home from './Home/home';
 import Admin from './Admin/admin';
+import TapCollection from './Home/container/TapCollection';
+import TapTools from './Home/container/TapTools';
+import TapProject from './Home/container/TapProject';
 
 import AppRedux from './public/reducer'
 
@@ -27,7 +30,11 @@ ReactDOM.render(
 	<Provider store={store}>
 		<MuiThemeProvider>
 		  <Router history={hashHistory}>
-			<Route path="/" component={Home} />
+			<Route path="/" component={Home}>
+				<Route path="/collection" component={TapCollection} />
+				<Route path="/tools" component={TapTools} />
+				<Route path="/project" component={TapProject} />
+			</Route>
 			<Route path="/admin" component={Admin} />
 		  </Router>
 		 </MuiThemeProvider>

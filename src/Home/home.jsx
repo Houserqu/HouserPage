@@ -11,6 +11,7 @@ export default class Home extends React.Component {
 			<div>
 				<BigHead />
 				<NavTap />
+				{this.props.children}
 				<HomeFooter />
 			</div>
 			)
