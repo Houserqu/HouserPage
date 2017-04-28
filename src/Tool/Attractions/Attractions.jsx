@@ -1,30 +1,63 @@
 import React from 'react';
+import { Provider, connect } from 'react-redux'
+
 import Drawer from 'material-ui/Drawer';
 import MenuItem from 'material-ui/MenuItem';
 import RaisedButton from 'material-ui/RaisedButton';
-import AppBar from 'material-ui/AppBar';
+import TextField from 'material-ui/TextField';
+import Snackbar from 'material-ui/Snackbar';
 
-export default class DrawerSimpleExample extends React.Component {
+import AttractionsList from './AttractionsList';
+import {getAttractions} from './action';
 
-  constructor(props) {
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+
+class Attractions extends React.Component {
+  constructor(props){
     super(props);
-    this.state = {open: false};
   }
 
-  handleToggle = () => this.setState({open: !this.state.open});
+  handleBlur = (event) => {
+    console.log(event.target.value);
+    this.props.dispatch(getAttractions(event.target.value));
+  }
 
   render() {
+
+  	let style = {
+  		toobar:{
+  			margin:'100px 200px'
+  		}
+  	}
+
     return (
       <div>
-        <Drawer width={220} open={true}>
-        	<AppBar 
-        		title="地名/景点" 
-        	/>
-          <MenuItem>一、二级地名查询</MenuItem>
-          <MenuItem>三级地名查询</MenuItem>
-          <MenuItem>景点查询</MenuItem>
-        </Drawer>
+        <Snackbar
+          open={this.props.snackbar.open}
+          message={this.props.snackbar.message}
+          autoHideDuration={4000}
+          onRequestClose={this.handleRequestClose}
+        />
+
+        <Toolbar style={style.toobar}>
+        	<TextField
+        	  fullWidth={true}
+		        hintText="输入地名/景点名"
+            onBlur={this.handleBlur}
+		    />
+        </Toolbar>
+        <AttractionsList list={this.props.attractions.contentlist} />
       </div>
     );
   }
 }
+
+// Map Redux state to component props
+function mapStateToProps(state) {
+  return { 
+    attractions: state.Attractions.pagebean,
+    snackbar: state.global.snackbar
+  }
+}
+
+export default connect(mapStateToProps)(Attractions);
