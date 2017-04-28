@@ -13,6 +13,9 @@ import TapCollection from './Home/container/TapCollection';
 import TapTools from './Home/container/TapTools';
 import TapProject from './Home/container/TapProject';
 
+import ToolsBar from './Tool/ToolsBar';
+import Attractions from './Tool/Attractions/Attractions';
+
 import AppRedux from './public/reducer'
 
 injectTapEventPlugin();
@@ -31,9 +34,12 @@ ReactDOM.render(
 		<MuiThemeProvider>
 		  <Router history={hashHistory}>
 			<Route path="/" component={Home}>
-				<Route path="/collection" component={TapCollection} />
-				<Route path="/tools" component={TapTools} />
-				<Route path="/project" component={TapProject} />
+				<Route path="collection" component={TapCollection} />
+				<Route path="tools" component={TapTools} />
+				<Route path="project" component={TapProject} />
+			</Route>
+			<Route path='tools' component={ToolsBar}>
+				<Route path="attractions" component={Attractions} />
 			</Route>
 			<Route path="/admin" component={Admin} />
 		  </Router>
