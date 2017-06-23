@@ -22,7 +22,7 @@ function collection(state={
         id:'1',
         title:'设计',
         links:[
-          {id:'1',name:'UI中国',link:'www.uichian.com'},
+          {id:'1',name:'UI中国',link:'https://www.baidu.com/'},
           {id:'2',name:'google',link:'www.uichian.com'},
           {id:'3',name:'baidu',link:'www.uichian.com'}
         ]
@@ -72,11 +72,11 @@ function tools(state={
   tools:[
       {
         id:'1',
-        title:'二维码',
-        digest:'在线二维码生成器',
+        title:'景点查询',
+        digest:'中国景点查询',
         image:'/static/image/houser.jpg',
         clicks:'89',
-        url:'/tools/QRcode',
+        url:'/tools/attractions',
       },{
         id:'2',
         title:'二维码',

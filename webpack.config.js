@@ -42,7 +42,7 @@ module.exports = {
   //添加我们的插件 会自动生成一个html文件
   plugins: [
     new HtmlwebpackPlugin({
-	    title: 'react app',
+	    title: 'Houser',
 	    template: path.resolve(TEM_PATH, 'index.html'),
 	    filename: 'index.html',
 	    //chunks这个参数告诉插件要引用entry里面的哪几个入口

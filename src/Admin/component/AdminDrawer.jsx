@@ -5,9 +5,11 @@ import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionGrade from 'material-ui/svg-icons/action/grade';
 import ContentInbox from 'material-ui/svg-icons/content/inbox';
-import ContentDrafts from 'material-ui/svg-icons/content/drafts';
-import ContentSend from 'material-ui/svg-icons/content/send';
-import Subheader from 'material-ui/Subheader';
+import CheckBox from 'material-ui/svg-icons/toggle/check-box';
+import ContentDrafts from 'material-ui/svg-icons/editor/border-color';
+import InsertChart from 'material-ui/svg-icons/editor/insert-chart';
+import Code from 'material-ui/svg-icons/action/code';
+import { hashHistory } from 'react-router';
 
 export default class AdminDrawer extends React.Component {
 
@@ -15,6 +17,10 @@ export default class AdminDrawer extends React.Component {
     super(props);
     this.state = {open: false};
   }
+
+  changeTab(href){
+    hashHistory.push(href);
+  } 
 
   render() {
     return (
@@ -25,35 +31,25 @@ export default class AdminDrawer extends React.Component {
         <Drawer width={200} open={true} >
           <AppBar title="Console" />
           <List>
-            <ListItem primaryText="概览" leftIcon={<ContentSend />} />
-            <ListItem primaryText="博客" leftIcon={<ContentDrafts />} />
+            <ListItem primaryText="概览" leftIcon={<InsertChart />} onClick={href=>this.changeTab('/admin')}/>
+            <ListItem primaryText="收藏" leftIcon={<ActionGrade />} onClick={href=>this.changeTab('/admin/collection')}/>
+            <ListItem primaryText="博客" leftIcon={<ContentDrafts />} onClick={href=>this.changeTab('/admin/blog')}/>
+            <ListItem primaryText="项目" leftIcon={<Code />} onClick={href=>this.changeTab('/admin/project')} />
             <ListItem
               primaryText="工具"
               leftIcon={<ContentInbox />}
-              initiallyOpen={false}
+              initiallyOpen={true}
               primaryTogglesNestedList={true}
               nestedItems={[
                 <ListItem
                   key={1}
-                  primaryText="Starred"
-                  leftIcon={<ActionGrade />}
-                />,
-                <ListItem
-                  key={2}
-                  primaryText="Sent Mail"
-                  leftIcon={<ContentSend />}
+                  primaryText="ToDo"
+                  leftIcon={<CheckBox />}
                   disabled={true}
-                />,
-                <ListItem
-                  key={3}
-                  primaryText="Inbox"
-                  leftIcon={<ContentInbox />}
-                  open={this.state.open}
-                  onNestedListToggle={this.handleNestedListToggle}
                 />,
               ]}
             />
-            <ListItem primaryText="项目" leftIcon={<ContentDrafts />} />
+            
           </List>
         </Drawer>
       </div>

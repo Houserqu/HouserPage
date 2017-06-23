@@ -10,7 +10,7 @@ export default class CollectionCategory extends React.Component{
 	render(){
 		let links = this.props.category.links.map((item)=>{
 				return(
-					<FlatButton key={item.id} label={item.name} />
+					<FlatButton key={item.id} label={item.name} href={item.link}/>
 				)
 			});
 
