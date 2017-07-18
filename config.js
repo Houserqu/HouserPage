@@ -1,1 +1,1 @@
-config.js
+export API_DOMAIN = 'http://houserpage.local.com/public/api/';

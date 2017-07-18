@@ -1,7 +1,6 @@
 import { combineReducers } from 'redux';
 
 import Home from '../Home/homeReducer';
-import Admin from '../Admin/adminReducer';
 
 import Attractions from '../Tool/Attractions/attractionsReducer';
 
@@ -31,7 +30,6 @@ function global(state = {
 
 const rootReducer = combineReducers({
   Home,
-  Admin,
   global,
   Attractions
 })

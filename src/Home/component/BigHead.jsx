@@ -25,7 +25,7 @@ export default class BigHead extends React.Component{
 		};
 		return(
 			<div style={style.root}>
-				<img style={style.logo} src='/static/image/houser.jpg' />
+				<img style={style.logo} src='http://houser.oss-cn-shanghai.aliyuncs.com/houserpage/houser.jpg' />
 				<h1 style={style.h1}>Houser</h1>
 				<h3 style={style.h3}>Art && Technology</h3>
 			</div>

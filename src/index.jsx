@@ -8,11 +8,6 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 import thunkMiddleware from 'redux-thunk'
 
 import Home from './Home/home';
-import Admin from './Admin/admin';
-import Preview from './Admin/container/Preview';
-import Project from './Admin/container/Project';
-import Collection from './Admin/container/Collection';
-import Blog from './Admin/container/Blog';
 import TapCollection from './Home/container/TapCollection';
 import TapTools from './Home/container/TapTools';
 import TapProject from './Home/container/TapProject';
@@ -45,13 +40,7 @@ ReactDOM.render(
 			<Route path='tools' component={ToolsBar}>
 				<Route path="attractions" component={Attractions} />
 			</Route>
-			<Route path="/admin" component={Admin} >
-				<IndexRoute component={Preview}/>
-				<Route path="collection" component={Collection} />
-				<Route path="blog" component={Blog} />
-				<Route path="project" component={Project} />
-				<Route path="tools/todo" component={TapCollection} />
-			</Route>
+
 		  </Router>
 		 </MuiThemeProvider>
  	</Provider>,
