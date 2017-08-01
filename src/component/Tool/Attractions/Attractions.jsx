@@ -8,7 +8,6 @@ import TextField from 'material-ui/TextField';
 import Snackbar from 'material-ui/Snackbar';
 
 import AttractionsList from './AttractionsList';
-import {getAttractions} from './action';
 
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
@@ -19,7 +18,6 @@ class Attractions extends React.Component {
 
   handleBlur = (event) => {
     console.log(event.target.value);
-    this.props.dispatch(getAttractions(event.target.value));
   }
 
   render() {

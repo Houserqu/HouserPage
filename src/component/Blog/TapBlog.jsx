@@ -10,9 +10,20 @@ import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
 
+import {getBlogs} from '../../http';
+
 export default class TapBlog extends React.Component{
 	constructor(props){
-		super(props)
+		super(props);
+		this.state={
+			list:[]
+		}
+	}
+
+	componentDidMount=()=>{
+		getBlogs(data=>{
+			this.setState({list:data.result});
+		});
 	}
 
 	render(){
@@ -30,40 +41,25 @@ export default class TapBlog extends React.Component{
 			}
 		}
 		
-		let toolslist=[
-			{
-				username:'Houser',
-				time:'123',
-				headimg:'asd',
-				title:'git',
-				githuburl:'12312',
-				conetnt:'123123123',
-				tags:['reat']
-			}
-		]
-
 		return(
 
 
 			<div style={style.root}>
-				<TapHead introduction={this.props.introduction} />
 				<div style={style.main}>
 					{
-						toolslist.map(item=>{
+						this.state.list.map(item=>{
 							return(
 							<Link key={item.id}>
 					<Card style={style.toolbox} >
 					    <CardHeader
-					      title={item.username}
-					      subtitle={item.time}
-					      avatar={item.headimg}
+					      title='Houser'
+					      subtitle={item.updated_at}
+					      avatar='http://houser.oss-cn-shanghai.aliyuncs.com/houserpage/houser.jpg'
 					    />
 					    <CardTitle title={item.title} subtitle={item.githuburl} />
 					    <CardText>
 					      {item.conetnt}
-					      <br />
-					      <br />
-					      <ProjectChips tags={item.tags}/>
+					      <ProjectChips tags={[{id:'1', name:'react'},{id:'2',name:'javascript'}]}/>
 					    </CardText>
 					</Card>
 				</Link>	

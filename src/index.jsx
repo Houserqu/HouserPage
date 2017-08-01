@@ -2,10 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {Router, Route, hashHistory, IndexRoute} from 'react-router';
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
-import thunkMiddleware from 'redux-thunk'
+import store from './store';
 
 import Home from './home';
 import TapCollection from './component/Collection/TapCollection';
@@ -15,16 +14,7 @@ import TapBlog from './component/Blog/TapBlog';
 import ToolsBar from './component/Tool/ToolsBar';
 import Attractions from './component/Tool/Attractions/Attractions';
 
-import AppRedux from './reducer'
-
 injectTapEventPlugin();
-
-let store = createStore(
-	AppRedux,
-	applyMiddleware(
-		thunkMiddleware
-	)
-);
 
 console.log(store.getState());
 

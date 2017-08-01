@@ -1,6 +1,3 @@
-//import fetch from 'isomorphic-fetch'
-import {ajaxGetArticles} from './services/ajax'
-
 export const TOGGLE_DEAWER = 'TOGGLE_DEAWER';
 export const REFRESH_ARTICLE = 'REFRESH_ARTICLE';
 /*
