@@ -40,6 +40,7 @@
     "webpack-dev-server": "^2.4.2"
   },
   "dependencies": {
+    "eslint": "^4.3.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",

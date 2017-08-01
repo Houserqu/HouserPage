@@ -1,5 +1,5 @@
 import 'whatwg-fetch';
-import {openSnackbar} from '../../public/action/globalAction';
+import {openSnackbar} from '../../../globalAction';
 export function setAttractions(attractions){
 	return {
 		type:'SET_ATTRACTIONS',

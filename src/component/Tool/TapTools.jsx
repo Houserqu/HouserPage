@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
-import TapHead from '../component/TapHead';
+import TapHead from '../Public/TapHead';
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
 class TapTools extends React.Component{

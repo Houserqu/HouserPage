@@ -3,9 +3,8 @@ import { hashHistory } from 'react-router';
 
 import {Tabs, Tab} from 'material-ui/Tabs';
 import SwipeableViews from 'react-swipeable-views';
-import TapCollection from '../container/TapCollection';
-import TapTools from '../container/TapTools';
-import TapProject from '../container/TapProject';
+import TapCollection from '../Collection/TapCollection';
+import TapTools from '../Tool/TapTools';
 import Collection from 'material-ui/svg-icons/action/turned-in';
 import Build from 'material-ui/svg-icons/action/build';
 import Blog from 'material-ui/svg-icons/editor/insert-drive-file';
@@ -37,12 +36,8 @@ export default class NavTap extends React.Component {
     this.setState({
       slideIndex: value,
     });
-    
-    if(value == 'blog'){
-      window.location='http://houserqu.com';
-    }else{
-      hashHistory.push(value);
-    }
+
+    hashHistory.push(value);
   };
 
   render() {
@@ -52,10 +47,9 @@ export default class NavTap extends React.Component {
           onChange={this.handleChange}
           value={this.state.slideIndex}
         >
+          <Tab icon={<Blog />} label="博客" value={"/"} />
           <Tab icon={<Collection />}  label="网站收藏" value={"/collection"} />
           <Tab icon={<Build />} label="工具" value={"/tools"} />
-          <Tab icon={<Blog />} label="博客" value={"blog"} />
-          <Tab icon={<Project />} label="项目" value={"/project"} />
         </Tabs>
       </div>
     );

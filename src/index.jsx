@@ -7,15 +7,15 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import thunkMiddleware from 'redux-thunk'
 
-import Home from './Home/home';
-import TapCollection from './Home/container/TapCollection';
-import TapTools from './Home/container/TapTools';
-import TapProject from './Home/container/TapProject';
+import Home from './home';
+import TapCollection from './component/Collection/TapCollection';
+import TapTools from './component/Tool/TapTools';
+import TapBlog from './component/Blog/TapBlog';
 
-import ToolsBar from './Tool/ToolsBar';
-import Attractions from './Tool/Attractions/Attractions';
+import ToolsBar from './component/Tool/ToolsBar';
+import Attractions from './component/Tool/Attractions/Attractions';
 
-import AppRedux from './public/reducer'
+import AppRedux from './reducer'
 
 injectTapEventPlugin();
 
@@ -33,9 +33,9 @@ ReactDOM.render(
 		<MuiThemeProvider>
 		  <Router history={hashHistory}>
 			<Route path="/" component={Home}>
+				<IndexRoute component={TapBlog} />
 				<Route path="collection" component={TapCollection} />
 				<Route path="tools" component={TapTools} />
-				<Route path="project" component={TapProject} />
 			</Route>
 			<Route path='tools' component={ToolsBar}>
 				<Route path="attractions" component={Attractions} />

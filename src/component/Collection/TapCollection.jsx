@@ -1,10 +1,10 @@
 import React from 'react';
 import { connect } from 'react-redux'
 
-import TapHead from '../component/TapHead';
+import TapHead from '../Public/TapHead';
 import Paper from 'material-ui/Paper';
 import FlatButton from 'material-ui/FlatButton';
-import CollectionCategory from '../component/CollectionCategory'
+import CollectionCategory from '../Collection/CollectionCategory'
 
 class TapCollection extends React.Component{
 	constructor(props){

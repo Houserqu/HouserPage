@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router';
 
-import TapHead from '../component/TapHead';
-import ProjectChips from '../component/ProjectChips';
+import TapHead from '../Public/TapHead';
+import ProjectChips from './ProjectChips';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import ActionAndroid from 'material-ui/svg-icons/action/android';
 import FontIcon from 'material-ui/FontIcon';
 import FlatButton from 'material-ui/FlatButton';
 
-class TapProject extends React.Component{
+export default class TapBlog extends React.Component{
 	constructor(props){
 		super(props)
 	}
@@ -29,10 +29,29 @@ class TapProject extends React.Component{
 				marginBottom:'30px'
 			}
 		}
+		
+		let toolslist=[
+			{
+				username:'Houser',
+				time:'123',
+				headimg:'asd',
+				title:'git',
+				githuburl:'12312',
+				conetnt:'123123123',
+				tags:['reat']
+			}
+		]
 
-		let toolslist = this.props.projects.map((item) =>{
-			return(
-				<Link key={item.id}>
+		return(
+
+
+			<div style={style.root}>
+				<TapHead introduction={this.props.introduction} />
+				<div style={style.main}>
+					{
+						toolslist.map(item=>{
+							return(
+							<Link key={item.id}>
 					<Card style={style.toolbox} >
 					    <CardHeader
 					      title={item.username}
@@ -46,39 +65,14 @@ class TapProject extends React.Component{
 					      <br />
 					      <ProjectChips tags={item.tags}/>
 					    </CardText>
-					    <CardActions>
-					    	<RaisedButton
-						      href={item.githuburl}
-						      target="_blank"
-						      label="Github Link"
-						      primary={true}
-						      style={style.button}
-						     
-						    />
-						</CardActions>
 					</Card>
-				</Link>
-			);
-		});
-
-		return(
-
-
-			<div style={style.root}>
-				<TapHead introduction={this.props.introduction} />
-				<div style={style.main}>
-					{toolslist}
+				</Link>	
+				
+							)
+						})
+					}
 				</div>
 			</div>
 		)
 	}
 }
-
-function mapStateToProps(state){
-	return{
-		introduction: state.Home.project.introduction,
-		projects: state.Home.project.projects
-	}
-}
-
-export default connect(mapStateToProps)(TapProject);
