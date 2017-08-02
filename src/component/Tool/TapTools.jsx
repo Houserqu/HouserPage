@@ -5,7 +5,7 @@ import {Link} from 'react-router';
 import TapHead from '../Public/TapHead';
 import {Card, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 
-class TapTools extends React.Component{
+export default class TapTools extends React.Component{
 	constructor(props){
 		super(props)
 	}
@@ -13,7 +13,8 @@ class TapTools extends React.Component{
 	render(){
 		const style={
 			main:{
-				width:'1200px',
+				width:'90%',
+				maxWidth:'1200px',
 				margin:'50px auto',
 
 			},
@@ -27,7 +28,26 @@ class TapTools extends React.Component{
 			}
 		}
 
-		let toolslist = this.props.tools.map((item) =>{
+		const toolslistdata = 
+		[
+			{
+				id:'1',
+				title:'景点查询',
+				digest:'中国景点查询',
+				image:'/static/image/houser.jpg',
+				clicks:'89',
+				url:'/tools/attractions',
+			},{
+				id:'2',
+				title:'二维码',
+				digest:'在线二维码生成器',
+				image:'/static/image/houser.jpg',
+				clicks:'89',
+				url:'/tools/QRcode',
+			}
+		]
+
+		let toolslist = toolslistdata.map((item) =>{
 			return(
 				<Link to={item.url} key={item.id}>
 					<Card style={style.toolbox} >
@@ -48,7 +68,7 @@ class TapTools extends React.Component{
 
 		return(
 			<div style={style.root}>
-				<TapHead introduction={this.props.introduction} />
+				{/* <TapHead introduction='自己开发和收集的工具集' /> */}
 				<div style={style.main}>
 					{toolslist}
 				</div>
@@ -57,12 +77,3 @@ class TapTools extends React.Component{
 		)
 	}
 }
-
-function mapStateToProps(state){
-	return{
-		introduction: state.Home.tools.introduction,
-		tools: state.Home.tools.tools
-	}
-}
-
-export default connect(mapStateToProps)(TapTools);

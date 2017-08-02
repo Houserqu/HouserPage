@@ -11,7 +11,7 @@ import AttractionsList from './AttractionsList';
 
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 
-class Attractions extends React.Component {
+export default class Attractions extends React.Component {
   constructor(props){
     super(props);
   }
@@ -49,13 +49,3 @@ class Attractions extends React.Component {
     );
   }
 }
-
-// Map Redux state to component props
-function mapStateToProps(state) {
-  return { 
-    attractions: state.Attractions.pagebean,
-    snackbar: state.global.snackbar
-  }
-}
-
-export default connect(mapStateToProps)(Attractions);
